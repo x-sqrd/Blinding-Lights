@@ -15,7 +15,6 @@ body {
     font-size: 30px;
     padding: 0;
     margin: 0;
-    height: 3000px;
 
 }
 
@@ -32,7 +31,7 @@ body {
     font-size: 50px;
     padding-left: 40px;
 }
-/*Totally not ripped straight from W3*/
+
 #navbar {
     background: #ffffff;
     padding: 90px 10px;
@@ -51,4 +50,70 @@ body {
     font-size: 75px;
     font-weight: bold;
     transition: 0.4s;
+}
+
+.footer {
+    margin-bottom: 0; 
+    margin-top: 0;
+    background-color: #ffffff; 
+    color: #000000; 
+    text-align: center; 
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+
+#realnavigation {
+    margin-top: 190px;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
+    position: sticky;
+    display: block;
+}
+li a {
+    text-decoration: none;
+}
+
+#navbarreal {
+    padding-top: 0px; 
+    color: #ffffff; 
+    font-size: 0px;
+    transition: 0.1s;
+}
+
+.navitem {
+    font-family: Helvetica;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.navitem:hover {
+    transition-duration: 0.4s;
+    text-shadow: 2px 2px #f000f0;
+    
+}
+
+p {
+    padding-left: 20px;
+}
+#largetext {
+    font-size: 500px; 
+    padding-left: 40px; 
+    text-align: center; 
+    padding-bottom: 0; 
+    margin-top: 0; 
+    padding-top: 0; 
+    margin-bottom: 0; 
+    padding-bottom: 0;
+    text-shadow: 12px 12px #f000f0;
+    
+/*    #8f08f0
+    #7384ff
+    #234785
+    #f45685
+    #9923ff
+    #ff9392
+    #394aff
+    #f8f90b*/
+
 }
