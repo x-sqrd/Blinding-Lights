@@ -1,0 +1,54 @@
+@font-face {
+font-family: Helvetica;
+src: url('fonts/helvetica.ttf')
+}
+
+@font-face {
+font-family: HelveticaBold;
+src: url('fonts/helvetica-bold.ttf');
+}
+
+body {
+    color: #ffffff;
+    background-color: #000000;
+    font-family: Helvetica;
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+    height: 3000px;
+
+}
+
+.header {
+    font-family: HelveticaBold;
+    color: #ffffff;
+    font-size: 70px;
+    padding-left: 20px;
+}
+
+.bodytext {
+    font-family: Helvetica;
+    color: #ffffff;
+    font-size: 50px;
+    padding-left: 40px;
+}
+/*Totally not ripped straight from W3*/
+#navbar {
+    background: #ffffff;
+    padding: 90px 10px;
+    transition: 0.4s;
+    position: fixed; 
+    width: 100%;
+    top: 0; 
+    z-index: 99;
+    color: #000000;
+    text-align: center;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: HelveticaBold;
+    font-size: 75px;
+    font-weight: bold;
+    transition: 0.4s;
+}
