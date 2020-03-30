@@ -36,7 +36,7 @@ def int2bytes(i):
 
 # Input
 global inputstr
-if FlexibleInput == False: inputstr = "Hello World"
+if FlexibleInput == False: inputstr = "Hasjflaiewfjlakj"
 if FlexibleInput: inputstr = input('InputStr: ') # Use Custom Input
 
 # Converting String to Binary

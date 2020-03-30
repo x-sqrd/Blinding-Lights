@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>BlindingEncode v0.1a</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+    
+    $(document).ready(function(){
+        console.log('Ready to Go!')
+
+        $("#ButtontoChange").click(function(){
+            console.log('Button Clicked');
+            //Stuff the Button Does
+            var $inputText = $("#myText").val();
+            
+            //Call Python Input with $inputText as the variable
+            $.ajax({
+                 url: "encodeinhtml.py",
+                 crossOrigin: null,
+                 success: function(response) {
+                // here you do whatever you want with the response variable
+                 }
+                });
+
+            $("#HexOutput").text($inputText);
+        });
+
+    });
+
+    
+    </script>
+  </head>
+
+    <body>
+<h1><b>Blinding Lights JS Wrapper</b></h1>
+
+<p>This is just a very rudimentary way to flash the lights in the right data pattern, and retrive data from the python script</p>
+<h2><br><br>Type String to Convert</h2>
+<input type="text" id="myText" value="Some text...">
+<button id="ButtontoChange">Try it</button>
+<p><b>HexData (noncolor)</b></p>
+<p id="HexOutput">Will Change...</p>
+
+
+
+
+
+
+
+    </body>
+</html>
