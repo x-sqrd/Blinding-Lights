@@ -60,7 +60,7 @@ Colors = [
     ('#C0C0C0', '0011'), #lightgrey
     ('#FF0000', '0001'), #red
     ('#00FF00', '0101'), #brightgreen
-    ('#0000FF', '0010'),  #blue
+    ('#0000FF', '0010'), #blue
     ('#808080', '1000'), #darkgre7
     ('#008080', '1100'), #turquoise
     ('#FF5005', '1110'), #orange
