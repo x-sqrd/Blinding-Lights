@@ -40,7 +40,7 @@ if FlexibleInput == False: inputstr = "Hello World"
 if FlexibleInput: inputstr = input('InputStr: ') # Use Custom Input
 
 # Converting String to Binary
-binaryinput = text_to_bits(inputstr) #! TODO NEED TO CREATE ENCODE/DECODE METHOD!!!!
+binaryinput = text_to_bits(inputstr)
 
 #8 Bit Color Matrix
 Colors = [
@@ -52,7 +52,7 @@ Colors = [
     ('#FF0000', '0001'), #red
     ('#00FF00', '0101'), #brightgreen
     ('#0000FF', '0010'),  #blue
-    ('#808080', '1000'), #darkgre7
+    ('#808080', '1000'), #darkgrey
     ('#008080', '1100'), #turquoise
     ('#FF5005', '1110'), #orange
     ('#FFCC99', '1111'), #tan
@@ -67,12 +67,11 @@ output = [] # output list
 split = re.findall('.{1,4}', binaryinput)   # may need to use re.finditer() instead of findall because of stringsize
                                             # has issue where needs exactly 3 on each i think or else will output 000
 for z in range(0, len(split)):
-    block = split[z]
     for x in range(0,16):
-        if block == Colors[x][1]:
+        if split[z] == Colors[x][1]:
             output.append(Colors[x][0])     # at this point there is an exaustive list of colors created to represent the different code peices, but it is not rationalized into small peices
 
-cnt = 0 # Ew i prefer //konnie
+cnt = 0
 matrisizedoutput = []
 while cnt < len(output):
     templist = []

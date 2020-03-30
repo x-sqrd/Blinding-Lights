@@ -8,8 +8,8 @@
 #                                           //////              //////
 # created by Shad0w7
 
-# Blinding Decode NOCOMPRESSION v0.0.1a 
-''' [Input]: Colordata 
+# Blinding Decode NOCOMPRESSION v0.0.1a
+''' [Input]: Colordata
     [Output]: String (ASCII)
     [Description]:  '''
 
@@ -37,7 +37,7 @@ def int2bytes(i):
 if FlexibleInput == False: inputstr = "[('#00FFFF', '#808080', '#FF00FF', '#00FF00', '#FF00FF', '#008080', '#FF00FF', '#008080', '#FF00FF', '#FFCC99', '#0000FF', '#FFFFFF', '#00FF00', '#FFFF00', '#FF00FF', '#FFCC99', '#FFFF00', '#0000FF', '#FF00FF', '#008080', '#FF00FF', '#00FFFF')]"
 if FlexibleInput: inputstr = input('InputHexData: ') # Use Custom Input
 
-#Removing All Tuples and Text Stuff and Converting to an easy text 
+#Removing All Tuples and Text Stuff and Converting to an easy text
 hexstr = inputstr + '~~~' #know where the end is
 data = hexstr.split("'")
 rawhex = []
@@ -79,6 +79,6 @@ for x in range(0, len(rawhex)):
 
 binarystring = ''.join(map(str, binarylist))
 
-originalstring = text_from_bits(binarystring) #!TODO NEED TO ENCODE!!!!
+originalstring = text_from_bits(binarystring)
 
 sys.exit(originalstring)
