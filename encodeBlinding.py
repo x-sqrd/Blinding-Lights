@@ -8,8 +8,8 @@
 #                                           //////              //////
 # created by Shad0w7
 
-# Blinding Encode NOCOMPRESSION v0.0.1a 
-''' [Input]: String fixed or with input() 
+# Blinding Encode NOCOMPRESSION v0.0.1a
+''' [Input]: String fixed or with input()
     [Output]: ColorMatrix on 10x10 grid to encode and send (with binary 0's afterward)
     [Description]: This script will take in any string, and output the colormatrix that needs to be sent, if it needs to take up more than one frame, it will send out multiple blocks of different colors'''
 
@@ -39,7 +39,7 @@ global inputstr
 if FlexibleInput == False: inputstr = "Hello World"
 if FlexibleInput: inputstr = input('InputStr: ') # Use Custom Input
 
-# Converting String to Binary 
+# Converting String to Binary
 binaryinput = text_to_bits(inputstr) #! TODO NEED TO CREATE ENCODE/DECODE METHOD!!!!
 
 #8 Bit Color Matrix
@@ -72,24 +72,21 @@ for z in range(0, len(split)):
         if block == Colors[x][1]:
             output.append(Colors[x][0])     # at this point there is an exaustive list of colors created to represent the different code peices, but it is not rationalized into small peices
 
-cnt = 0
+cnt = 0 # Ew i prefer //konnie
 matrisizedoutput = []
 while cnt < len(output):
     templist = []
-    if cnt+100 >= len(output): 
+    if cnt+100 >= len(output):
         for a in range(cnt, len(output)):
             templist.append(output[a])
-            
-    else: 
+
+    else:
         for a in range(cnt, cnt+100):
             templist.append(output[a])
-            
+
     cnt+=100
 
     matrisizedoutput.append(tuple(templist))
     templist.clear()
 
 sys.exit(matrisizedoutput)
-    
-
-    
