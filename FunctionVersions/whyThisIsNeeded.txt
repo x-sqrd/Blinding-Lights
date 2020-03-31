@@ -1,0 +1,6 @@
+# Blinding Lights
+
+It is neccesary to convert all current python files into functions,
+so they can be imported with ``import [filename].py``, to run them 
+from a wrapper file which can call on different functions and libraries
+from the files that the functions are from respectivley
