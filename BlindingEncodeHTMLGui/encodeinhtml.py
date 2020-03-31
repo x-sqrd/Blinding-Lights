@@ -61,4 +61,6 @@ def texttohex(string): # Callable Function which does not give the
     stroutput = o.join(output)
     return stroutput
 
-print(texttohex('asdfasdfadswf'))
+print("Imported Successfuly")
+if __name__ == "__main__":
+   pass
