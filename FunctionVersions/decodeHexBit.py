@@ -70,6 +70,6 @@ def decodeHex(inputstr):
     
     return originalstring
 
-print("Imported Successfuly") # import message
+print("Imported Successfuly") # import message (not needed)
 if __name__ == "__main__":
    pass
