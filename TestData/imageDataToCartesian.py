@@ -3,7 +3,6 @@ print('Module imageDataToCartesian.py')
 # Created by Ayush Nayak in 2020
 from PIL import Image
 
-
 def imagetoCartesian(path):
     try:
         im = Image.open(path, 'r').convert('RGB')
@@ -36,14 +35,20 @@ def imagetoCartesian(path):
     countHex = 0
 
     while county < height:
+        global list1
+        list1 = []
         while countx < width:
-            output.append((countx, county, hexArr[countHex]))
+
+            list1.append(hexArr[countHex])
             countHex+=1
             countx+=1
         #now countx = 100
+        output.append(list1)
         countx = 0
         county += 1
     return output
+
+print(imagetoCartesian('TestData/a.png'))
 
 print("Imported Successfuly") # import message
 if __name__ == "__main__":
