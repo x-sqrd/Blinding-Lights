@@ -246,8 +246,13 @@ def bashSkew(blacklist):
 
     degrees = math.degrees(math.atan(slope))
     # TODO Still have to play with degree's to find out how well it works, and what it represents, however no debugging needed, as reliably will spit out a degree value.
+    if slope < 0:
+        newdeg = degrees + 45
+    else:
+        newdeg = degrees - 45
 
     return output
+
 
 
 
