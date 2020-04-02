@@ -148,6 +148,8 @@ def borderTrace(borderStart, coordinates):
     currentY = startY
     borderList = []
     while True:
+        print("–––––––––––––––––––––––––––––––––––")
+        print("Current coordinates: (%d, %d)" % (currentX, currentY))
         prevCheckingX = currentX + 2
         prevCheckingY = currentY
         checkingX = prevCheckingX
@@ -155,15 +157,17 @@ def borderTrace(borderStart, coordinates):
 
         while True: # Find next point
             try:
-                if hexIsBlack(coordinates[checkingX][checkingY]) and not hexIsBlack(coordinates[prevCheckingX, prevCheckingY]):
+                print("Trying to check coordinates: (%d, %d)" % (checkingX, checkingY))
+                print("That has color %s" % coordinates[checkingX][checkingY])
+                if hexIsBlack(coordinates[checkingX][checkingY]) and not hexIsBlack(coordinates[prevCheckingX][prevCheckingY]):
                     # The current point is black, but the previous point isn't. Bingo!
                     previousX = currentX    # Move along the border.
                     previousY = currentY    # which means updating coordinates
                     currentX = checkingX
                     currentY = checkingY
-                    borderList.append([currentX], [currentY])
+                    borderList.append((currentX, currentY))
                     break
-                elif checkingX == currentX + 2 and checkingY == currentY + 2:
+                elif checkingX == currentX + 2 and checkingY == currentY + 1:
                     # We did a full loop and didn't find anything useful. Something is off.
                     return None
                 else:
@@ -176,18 +180,19 @@ def borderTrace(borderStart, coordinates):
                     checkingX = currentX + deltaX
                     checkingY = currentY + deltaY
             except IndexError:
+
                 # Didn't work, so we'll check different points and run the process again.
-                prevCheckingX = checkingX
-                prevCheckingY = checkingY
                 deltaX = checkingX - currentX
                 deltaY = checkingY - currentY
                 deltaX, deltaY = calcNextPoint(deltaX, deltaY)
                 checkingX = currentX + deltaX
                 checkingY = currentY + deltaY
+                print("Out of range, moving onto checking (%d, %d)" % (checkingX, checkingY) )
 
         # Check if we've completed the loop
         if currentY > startY and previousY < startY:
             return borderList
+
 
 def smoothBorder():
     """
@@ -206,7 +211,7 @@ def smoothBorder():
 def borderBashed(coordinates): #Part of @bashingit
     blacklist = []
     height = len(coordinates)
-    width = len(coordinates[0]) 
+    width = len(coordinates[0])
     x = 0
     y = 0
     while y < height:
@@ -223,7 +228,7 @@ def bashSkew(blacklist):
     vertical = False
     #find corners
     topCorner = blacklist[0] # top corner is first encountered by blacklist which goes by y downwards
-    bottomCorner = blacklist[len(blacklist) - 1] # same principle for bottom corner 
+    bottomCorner = blacklist[len(blacklist) - 1] # same principle for bottom corner
     # NOTE: if the image is perfect, the entire function will output a slope of -1 which is 45 degrees anyways so the function works no matter what
     if topCorner[0] > bottomCorner[0]:
         x1 = bottomCorner[0]
