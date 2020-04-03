@@ -142,7 +142,7 @@ def calcNextPoint(deltaX, deltaY):
 def borderTrace(borderStart, coordinates):
     startX = borderStart[0]
     startY = borderStart[1]
-    previousX = startX
+    previousX = startX # NOTE to Daniel, This is listed as an Unused Variable, (basically you never refrence it later)
     previousY = startY
     currentX = startX
     currentY = startY
@@ -252,13 +252,58 @@ def bashSkew(blacklist):
     degrees = math.degrees(math.atan(slope))
     # TODO Still have to play with degree's to find out how well it works, and what it represents, however no debugging needed, as reliably will spit out a degree value.
     if slope < 0:
-        newdeg = degrees + 45
+        newdeg = degrees + 45 #this is if it is tilted from the right side
     else:
         newdeg = degrees - 45
-
+    newslope = math.degrees(math.tan(math.radians(newdeg)))
+    output = newslope
     return output
 
 
+# New Framework!!! Not based at all!!!
+
+def searchup(initialpoint, coordinates, searchmetric, color="#000000"):
+    if searchmetric == 'y':
+        down = initialpoint.copy()
+        up = initialpoint.copy()
+        while True:
+            #go up
+            down[1] -= 1
+            if coordinates[down[1]][down[0]] == color:
+                point1 = down
+                break
+            up[1] += 1
+            if coordinates[up[1]][down[0]] == color:
+                point1 = up
+                break
+
+    elif searchmetric == 'x':
+        left = initialpoint.copy()
+        right = initialpoint.copy()
+        while True:
+            #go up
+            left[0] -= 1
+            if coordinates[left[1]][left[0]] == color:
+                point1 = left
+                break
+            right[0] += 1
+            if coordinates[right[1]][right[0]] == color:
+                point1 = right
+                break
+    else: 
+        print("Error, incorrect searchmetric value! \n  exiting...")
+        exit(1)
+
+    return point1
+
+
+def borderFindSlope(borderPoint, coordinates):
+    # assumes nonperfect dataset, and a dataset that is not rotated exactly 45 degrees (slope of two points is either 0 or undefined based on the way you look at it)
+    origin = borderPoint
+    #go down and up
+    point1 = searchup(borderPoint, coordinates, searchmetric="y", color="#000000")
+
+     
 
 
 

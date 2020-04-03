@@ -48,7 +48,7 @@ def imagetoCartesian(path):
         county += 1
     return output
 
-print(imagetoCartesian('TestData/b.png'))
+print(imagetoCartesian('TestData/c.png'))
 
 print("Imported Successfuly") # import message
 if __name__ == "__main__":
