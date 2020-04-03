@@ -19,8 +19,8 @@ import math
 import time
 import datasets as DS
 
-#
-#
+# to use, check out the dataset you want to use, such as c.png, and the corresponding function, in this case, imageC(), in datasets, and run that
+# for instance: >> print(DS.imageC()) to get the hexValue, check other ImageC functions for more!
 #
 
 

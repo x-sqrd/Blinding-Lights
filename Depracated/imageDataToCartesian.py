@@ -1,5 +1,5 @@
 # Blinding Lights Image to Cartesian Coordinates [Python 3.8.2]
-print('Module imageDataToCartesian.py')
+if __name__=="__main__": print('Module imageDataToCartesian.py')
 # Created by Ayush Nayak in 2020
 from PIL import Image
 
@@ -48,8 +48,8 @@ def imagetoCartesian(path):
         county += 1
     return output
 
-print(imagetoCartesian('TestData/c.png'))
+#print(imagetoCartesian('TestData/a.png')) # Test only for my computer (ayush)
 
-print("Imported Successfuly") # import message
+ # import message
 if __name__ == "__main__":
-   pass
+   print("Imported Successfuly")
