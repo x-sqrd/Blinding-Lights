@@ -149,6 +149,7 @@ def borderTrace(borderStart, coordinates):
     currentX = startX
     currentY = startY
     borderList = [(startX, startY)]
+    startTime  = time.time()
     while True:
         # print("–––––––––––––––––––––––––––––––––––")
         # print("Current coordinates: (%d, %d)" % (currentX, currentY))
@@ -163,7 +164,7 @@ def borderTrace(borderStart, coordinates):
                 # print("Trying to check coordinates: (%d, %d)" % (checkingX, checkingY))
                 # print("Previous coordinates: (%d, %d)" % (prevCheckingX, prevCheckingY))
                 # print("That has color %s" % coordinates[checkingX][checkingY])
-                if hexIsBlack(coordinates[checkingX][checkingY]) and not hexIsBlack(coordinates[prevCheckingX][prevCheckingY]) and not (checkingX, checkingY) in borderList:
+                if hexIsBlack(coordinates[checkingX][checkingY]) and not hexIsBlack(coordinates[prevCheckingX][prevCheckingY]) and not (checkingX, checkingY) == borderList[len(borderList) - 2]:
                     # The current point is black, but the previous point isn't. Bingo!
                     FIRST_TIME = False
                     currentX = checkingX
@@ -204,6 +205,9 @@ def borderTrace(borderStart, coordinates):
         # Check if we've completed the loop
         if abs(startX - currentX) <= 1 and abs(startY - currentY) <= 1:
             return borderList
+
+        if time.time() - startTime > 0.015:
+            return None
 
 
 def smoothBorder():
