@@ -140,46 +140,45 @@ def calcNextPoint(deltaX, deltaY):
 
 
 def borderTrace(borderStart, coordinates):
+    """
+        Purpose: Trace the inner edge of the black border, starting from borderStart
+        Return: A list of tuples representing the inner edge of the black border, if found. Otherwise, return None.
+    """
     startX = borderStart[0]
     startY = borderStart[1]
-    #previousX = startX 
-    # NOTE to Daniel, This is listed as an Unused Variable, (basically you never refrence it later)
-    """
-    PreviousX not ever being used annoyed the heck out of my VSCode so it is commented out until used
-    """
-    previousY = startY
     currentX = startX
     currentY = startY
-    borderList = []
+    borderList = [(startX, startY)]
     while True:
-        print("–––––––––––––––––––––––––––––––––––")
-        print("Current coordinates: (%d, %d)" % (currentX, currentY))
+        # print("–––––––––––––––––––––––––––––––––––")
+        # print("Current coordinates: (%d, %d)" % (currentX, currentY))
         prevCheckingX = currentX + 2
         prevCheckingY = currentY
         checkingX = prevCheckingX
         checkingY = prevCheckingY + 1
+        FIRST_TIME = True
 
         while True: # Find next point
             try:
-                print("Trying to check coordinates: (%d, %d)" % (checkingX, checkingY))
-                print("That has color %s" % coordinates[checkingX][checkingY])
-                if hexIsBlack(coordinates[checkingX][checkingY]) and not hexIsBlack(coordinates[prevCheckingX][prevCheckingY]):
+                # print("Trying to check coordinates: (%d, %d)" % (checkingX, checkingY))
+                # print("Previous coordinates: (%d, %d)" % (prevCheckingX, prevCheckingY))
+                # print("That has color %s" % coordinates[checkingX][checkingY])
+                if hexIsBlack(coordinates[checkingX][checkingY]) and not hexIsBlack(coordinates[prevCheckingX][prevCheckingY]) and not (checkingX, checkingY) in borderList:
                     # The current point is black, but the previous point isn't. Bingo!
-                    # previousX = currentX    # Move along the border.
-                    # NOTE to Daniel, This is listed as an Unused Variable, (basically you never refrence it later)
-                    """
-                    PreviousX not ever being used annoyed the heck out of my VSCode so it is commented out until used
-                    """
-                    previousY = currentY    # which means updating coordinates
+                    FIRST_TIME = False
                     currentX = checkingX
                     currentY = checkingY
                     borderList.append((currentX, currentY))
+                    # print("Checking: (%d, %d) works!" % (checkingX, checkingY))
+                    # print("Previous Checking: (%d, %d) has color %s" % (prevCheckingX, prevCheckingY, coordinates[prevCheckingX][prevCheckingY]))
                     break
-                elif checkingX == currentX + 2 and checkingY == currentY + 1:
+                elif checkingX == currentX + 2 and checkingY == currentY + 1 and not FIRST_TIME:
                     # We did a full loop and didn't find anything useful. Something is off.
                     return None
+                    # return None
                 else:
                     # Didn't work, so we'll check different points and run the process again.
+                    FIRST_TIME = False
                     prevCheckingX = checkingX
                     prevCheckingY = checkingY
                     deltaX = checkingX - currentX
@@ -187,18 +186,23 @@ def borderTrace(borderStart, coordinates):
                     deltaX, deltaY = calcNextPoint(deltaX, deltaY)
                     checkingX = currentX + deltaX
                     checkingY = currentY + deltaY
+                    # print("Typical not work, moving onto checking (%d, %d)" % (checkingX, checkingY) )
+                    # print("Previous coordinates: (%d, %d)" % (prevCheckingX, prevCheckingY))
             except IndexError:
-
-                # Didn't work, so we'll check different points and run the process again.
+                FIRST_TIME = False
+                prevCheckingX = checkingX
+                prevCheckingY = checkingY
                 deltaX = checkingX - currentX
                 deltaY = checkingY - currentY
                 deltaX, deltaY = calcNextPoint(deltaX, deltaY)
                 checkingX = currentX + deltaX
                 checkingY = currentY + deltaY
-                print("Out of range, moving onto checking (%d, %d)" % (checkingX, checkingY) )
+                # print("Out of range, moving onto checking (%d, %d)" % (checkingX, checkingY) )
+                # print("Previous coordinates: (%d, %d)" % (prevCheckingX, prevCheckingY))
+
 
         # Check if we've completed the loop
-        if currentY > startY and previousY < startY:
+        if abs(startX - currentX) <= 1 and abs(startY - currentY) <= 1:
             return borderList
 
 
@@ -299,7 +303,7 @@ def searchup(initialpoint, coordinates, searchmetric, color="#000000"):
             if coordinates[right[1]][right[0]] == color:
                 point1 = right
                 break
-    else: 
+    else:
         print("Error, incorrect searchmetric value! \n  exiting...")
         exit(1)
 
@@ -318,7 +322,7 @@ def borderFindSlope(coordinates, borderPoint=(-1,-1)):
 
     print(point1, point2, point3, point4)
 
-     
+
 
 
 
