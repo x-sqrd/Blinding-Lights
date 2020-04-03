@@ -142,7 +142,10 @@ def calcNextPoint(deltaX, deltaY):
 def borderTrace(borderStart, coordinates):
     startX = borderStart[0]
     startY = borderStart[1]
-    previousX = startX # NOTE to Daniel, This is listed as an Unused Variable, (basically you never refrence it later)
+    #previousX = startX # NOTE to Daniel, This is listed as an Unused Variable, (basically you never refrence it later)
+    """
+    PreviousX not ever being used annoyed the heck out of my VSCode so it is commented out until used
+    """
     previousY = startY
     currentX = startX
     currentY = startY
