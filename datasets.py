@@ -14,12 +14,9 @@ def imageC():
 def imageD():
     return ID.imagetoCartesian("TestData/d.png")
 
-def image0012():
-    return ID.imagetoCartesian("TestData/IMG_0012.jpg")
-
-def largeImage(path, create=False):
+def largeImage(path, decompress=500, create=False):
     im = Image.open(path)
-    im.thumbnail((800,800), Image.BICUBIC)
+    im.thumbnail((decompress,decompress), Image.BICUBIC)
 
     redPix = list(im.getdata(0))
     greenPix = list(im.getdata(1))
@@ -60,5 +57,24 @@ def largeImage(path, create=False):
     
     if create: im.save('compressed.jpg', 'JPEG', progressive=True, quality=100)
     return output 
-y = largeImage("TestData/IMG_0012.jpg", create=True)
-print(y) 
+
+
+def image12():
+    return largeImage("TestData/IMG_0012.jpg")
+
+def image13():
+    return largeImage("TestData/IMG_0013.jpg")
+
+def image14():
+    return largeImage("TestData/IMG_0014.jpg")
+
+def image15():
+    return largeImage("TestData/IMG_0015.jpg")
+
+def image16():
+    return largeImage("TestData/IMG_0016.jpg")
+
+def image17():
+    return largeImage("TestData/IMG_0017.jpg")
+
+
