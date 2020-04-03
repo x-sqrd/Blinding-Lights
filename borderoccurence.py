@@ -16,6 +16,7 @@
 # Blinding BorderOccurence.py
 from PIL import Image
 import math
+import time
 
 
 def imagetoCartesian(path): # from a different package only here for testing purposes
@@ -142,8 +143,13 @@ def calcNextPoint(deltaX, deltaY):
 def borderTrace(borderStart, coordinates):
     """
         Purpose: Trace the inner edge of the black border, starting from borderStart
-        Return: A list of tuples representing the inner edge of the black border, if found. Otherwise, return None.
+        Return: A list of tuples representing the inner edge of the black border, if found.
+                If the path it follows just ends abruptly, return None.
+                If it times out, return None.
     """
+    # The maximum time the program is allowed to run until it force-exits. Tweak as needed.
+    maxTime = 0.015
+
     startX = borderStart[0]
     startY = borderStart[1]
     currentX = startX
@@ -206,7 +212,7 @@ def borderTrace(borderStart, coordinates):
         if abs(startX - currentX) <= 1 and abs(startY - currentY) <= 1:
             return borderList
 
-        if time.time() - startTime > 0.015:
+        if time.time() - startTime > maxTime:
             return None
 
 
