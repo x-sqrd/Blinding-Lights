@@ -142,7 +142,8 @@ def calcNextPoint(deltaX, deltaY):
 def borderTrace(borderStart, coordinates):
     startX = borderStart[0]
     startY = borderStart[1]
-    #previousX = startX # NOTE to Daniel, This is listed as an Unused Variable, (basically you never refrence it later)
+    #previousX = startX 
+    # NOTE to Daniel, This is listed as an Unused Variable, (basically you never refrence it later)
     """
     PreviousX not ever being used annoyed the heck out of my VSCode so it is commented out until used
     """
@@ -164,7 +165,11 @@ def borderTrace(borderStart, coordinates):
                 print("That has color %s" % coordinates[checkingX][checkingY])
                 if hexIsBlack(coordinates[checkingX][checkingY]) and not hexIsBlack(coordinates[prevCheckingX][prevCheckingY]):
                     # The current point is black, but the previous point isn't. Bingo!
-                    previousX = currentX    # Move along the border.
+                    # previousX = currentX    # Move along the border.
+                    # NOTE to Daniel, This is listed as an Unused Variable, (basically you never refrence it later)
+                    """
+                    PreviousX not ever being used annoyed the heck out of my VSCode so it is commented out until used
+                    """
                     previousY = currentY    # which means updating coordinates
                     currentX = checkingX
                     currentY = checkingY
