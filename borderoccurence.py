@@ -1,4 +1,4 @@
-# created by Shad0w7 + ChickenAgent2227\
+# created by Shad0w7 + ChickenAgent2227
 
 # ///////////////       |||||||||    //\\    \\\\\\ \\\\\\ \\\\\\ \\\\\\\\\
 # //         //         ||          //  \\       \\     \\     \\       \\
@@ -9,7 +9,7 @@
 
 #TODO needs major debugging heck
 
-# Shared Framework - (NOTE Do NOT make substantial changes too, or make new functions, as these base utilites are used by both editors/frameworks)
+# Shared Framework - (NOTE Do NOT make substantial changes to, or make new functions, as these base utilites are used by both editors/frameworks)
 
 
 
@@ -221,14 +221,69 @@ def borderTrace(borderStart, coordinates):
             return None
 
 
-def smoothBorder():
+def distBetween(aPoint, aNotherPoint):
+    """ Uses the distance formula to find the distance between 2 points """
+    deltaX = aNotherPoint[0] - aPoint[0]
+    deltaY = aNotherPoint[1] - aPoint[1]
+    dist = math.sqrt(deltaX**2 + deltaY**2)
+    return dist
+
+def smoothenBorder(borderList):
     """
-    Purpose: Literally smoothen the border.
-    Return: Coordinates of the 4 corners
+    Finds the topmost, leftmost, bottommost, and rightmost points in a given list of points
     """
-    pass
+    top = borderList[0]
+    bottom = borderList[0]
+    left = borderList[0]
+    right = borderList[0]
+
+    for point in borderList:
+        # Looking for topmost point
+        if point[1] > top[1]:
+            top = point
+        elif point[1] == top[1] and point[0] > top[0]:
+            # When in doubt, pick the rightmost one
+            top = point
+
+        # Looking for bottommost point
+        if point[1] < bottom[1]:
+            bottom = point
+        elif point[1] == bottom[1] and point[0] < bottom[0]:
+            # When in doubt, pick the leftmost one
+            bottom = point
+
+        # Looking for rightmost point
+        if point[0] > right[0]:
+            right = point
+        elif point[0] == right[0] and point[1] < right[1]:
+            # When in doubt, pick the bottommost one
+            right = point
+
+        # Looking for leftmost point
+        if point[0] < left[0]:
+            left = point
+        elif point[0] == left[0] and point[1] > left[1]:
+            # When in doubt, pick the topmost one
+            left = point
+
+    return top, bottom, left, right
 
 
+def findScreenPos(top, bottom, left, right):
+    """
+    Interprets the output of smoothenBorder to figure out the screen's orientation.
+    """
+    BL = left       # Bottomleft point of the screen
+    TL = top        # Topleft point of the screen
+    TR = right      # Topright point of the screen
+    BR = bottom     # Bottomright point of the screen
+    if distBetween(bottom, left) >= distBetween(bottom, right):
+        BL = bottom
+        TL = left
+        TR = top
+        BR = right
+
+    return BL, TL, TR, BR
 
 
 # The AYUSH Framework !!!! YAY!
