@@ -6,7 +6,8 @@ import re
 import sys
 import binascii
 FlexibleInput = False
-# encoding/decoding function from stackexchange thread
+
+
 def text_to_bits(text, encoding='utf-8', errors='surrogatepass'):
     bits = bin(int(binascii.hexlify(text.encode(encoding, errors)), 16))[2:]
     return bits.zfill(8 * ((len(bits) + 7) // 8))

@@ -7,7 +7,6 @@ import sys
 import binascii
 import base64
 
-# Stack Overflow Stuff
 def text_to_bits(text, encoding='utf-8', errors='surrogatepass'):
     bits = bin(int(binascii.hexlify(text.encode(encoding, errors)), 16))[2:]
     return bits.zfill(8 * ((len(bits) + 7) // 8))
@@ -59,4 +58,5 @@ def texttohex(string): # Callable Function
     stroutput = o.join(output)
     return stroutput
 
+# TODO 
 if __name__ == "__main__": print("Imported Successfuly") # import message
