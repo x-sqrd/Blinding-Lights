@@ -1,7 +1,7 @@
 # Blinding Lights Image to Cartesian Coordinates [Python 3.8.2]
 if __name__ == "__main__": print('Module imageDataToCartesian.py')
 # Created by Ayush Nayak in 2020
-from PIL import Image
+from PIL import Image # TODO CANNOT IMPORT 
 #CorePackages
 def rgbToHex(RGBtuple):
     return '#%02x%02x%02x' % (RGBtuple[0], RGBtuple[1], RGBtuple[2])
@@ -11,7 +11,8 @@ def rbgToRaster(RGBtuple):
     return "Almost Written"
 
 #Functions
-def imagetoCartesian(path): #DEPRACATED PACKACGE
+def imagetoCartesian(path, notflipped=False): #DEPRECATED PACKAGE
+
     try:
         im = Image.open(path, 'r').convert('RGB')
     except FileNotFoundError:
@@ -32,32 +33,46 @@ def imagetoCartesian(path): #DEPRACATED PACKACGE
     for m in range(0, len(pixArr)):
         hexArr.append(rgbToHex(pixArr[m]))
 
+# now everything has been converted into a list with the hex values, but its not in xy form YET...
+
     width, height = im.size
 
     countx = 0
     county = 0
 
     output = []
+    if notflipped:
+        countHex = 0
 
-    countHex = 0
+        while county < height:
+            list1 = []
+            while countx < width:
+                list1.append(hexArr[countHex])
+                countHex+=1
+                countx+=1
+            #now countx = 100
+            output.append(list1)
+            countx = 0
+            county += 1
+        return output
+    else:
 
-    while county < height:
-        global list1
-        list1 = []
+        countX = 0
+        countY = 0
+
         while countx < width:
+            list1 = []
+            while county/100 < height:
+                list1.append(hexArr[countY + countx])
+                countY += 100
+            output.append(list1)
+            countX += 1
 
-            list1.append(hexArr[countHex])
-            countHex+=1
-            countx+=1
-        #now countx = 100
-        output.append(list1)
-        countx = 0
-        county += 1
-    return output
+
 
 
 if __name__ == "__main__":
-    print("Imported Successfuly") # import message
+    print("Imported Successfully") # import message
 
 
 def PILImageToRaster(path):
@@ -90,7 +105,6 @@ def PILImageToRaster(path):
     countHex = 0
 
     while county < height:
-        global list1
         list1 = []
         while countx < width:
 
@@ -102,3 +116,6 @@ def PILImageToRaster(path):
         countx = 0
         county += 1
     return output
+
+
+imagetoCartesian("/TestData/b.png")
