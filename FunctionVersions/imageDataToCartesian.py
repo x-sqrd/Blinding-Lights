@@ -1,5 +1,5 @@
 # Blinding Lights Image to Cartesian Coordinates [Python 3.8.2]
-print('Module imageDataToCartesian.py')
+if __name__ == "__main__": print('Module imageDataToCartesian.py')
 # Created by Ayush Nayak in 2020
 from PIL import Image
 #CorePackages
@@ -7,7 +7,7 @@ def rgbToHex(RGBtuple):
     return '#%02x%02x%02x' % (RGBtuple[0], RGBtuple[1], RGBtuple[2])
 
 def rbgToRaster(RGBtuple):
-    
+
     return "Almost Written"
 
 #Functions
@@ -59,7 +59,7 @@ def imagetoCartesian(path): #DEPRACATED PACKACGE
 if __name__ == "__main__":
     print("Imported Successfuly") # import message
 
-    
+
 def PILImageToRaster(path):
     try:
         im = Image.open(path, 'r').convert('RGB')

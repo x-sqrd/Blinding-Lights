@@ -1,5 +1,5 @@
 # Blinding Lights Image to Cartesian Coordinates [Python 3.8.2]
-print('Module encodeBitHex.py')
+if __name__ == "__main__": print('Module encodeBitHex.py')
 # Created by Ayush Nayak in 2020
 
 import re
@@ -48,17 +48,15 @@ Colors = [
 
 def texttohex(string): # Callable Function
     binaryinput = text_to_bits(string)
-    
-    split = re.findall('.{1,4}', binaryinput) 
+
+    split = re.findall('.{1,4}', binaryinput)
 
     for z in range(0, len(split)):
         for x in range(0,16):
             if split[z] == Colors[x][1]:
-                output.append(Colors[x][0]) 
+                output.append(Colors[x][0])
     o = " "
     stroutput = o.join(output)
     return stroutput
 
-print("Imported Successfuly") # import message
-if __name__ == "__main__":
-   pass
+if __name__ == "__main__": print("Imported Successfuly") # import message

@@ -1,5 +1,5 @@
 # Blinding Lights Image to Cartesian Coordinates [Python 3.8.2]
-print('Module decodeHexBit.py')
+if __name__ == "__main__": print('Module decodeHexBit.py')
 # Created by Ayush Nayak in 2020
 
 import re
@@ -58,7 +58,7 @@ def decodeHex(inputstr):
         for y in range(0, 16):
             if rawhex[x] == Colors[y][0]:
                 binarylist.append(Colors[y][1])
-   
+
     binarystring = ''.join(map(str, binarylist))
     try:
         originalstring = text_from_bits(binarystring)
@@ -67,9 +67,7 @@ def decodeHex(inputstr):
         print('Please input data in the style of [#ffffff, #ff0000...]!')
         print('Exiting...')
         exit(1)
-    
+
     return originalstring
 
-print("Imported Successfuly") # import message (not needed)
-if __name__ == "__main__":
-   pass
+if __name__ == "__main__":  print("Imported Successfuly") # import message (not needed)
