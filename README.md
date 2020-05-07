@@ -2,7 +2,7 @@
 
 ## An Exhaustively Researched App Plan
 
-###### Ayush
+###### Shad0w
 > Hey
 > our past ideas arent really going that well 
 > cause they are all physical 
@@ -13,7 +13,7 @@
 >im brushing up on Java and Python for android development but if ur interested i want to hash out an algorithm to actually build like a lightweight app
 > hmu if ur interested in this actual idea
 
-###### Daniel
+###### ChickenAgent
 > so quick data sending via flashing lights?
 > im in
 > like always lol
